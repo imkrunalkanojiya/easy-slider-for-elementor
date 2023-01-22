@@ -1,7 +1,7 @@
 <?php
  /**
  * Plugin Name:       Easy Slider for Elementor
- * Plugin URI:        ""
+ * Plugin URI:        https://github.com/imkrunalkanojiya/easy-slider-for-elementor
  * Description:       Easy Slider widget for Elementor.
  * Version:           1.0.0
  * Requires at least: 5.2
