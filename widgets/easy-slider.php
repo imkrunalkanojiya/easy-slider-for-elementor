@@ -37,11 +37,11 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'basic' ];
+		return [ 'general' ];
 	}
 
 	public function get_keywords() {
-		return [ 'hello', 'world' ];
+		return [ 'slider', 'carousel' ];
 		
 	}
 
