@@ -83,11 +83,72 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 					],
 					[
 						'list_title' => esc_html__( 'Image', 'easy-slider-for-elementor' ),
+					],
+					[
+						'list_title' => esc_html__( 'Image', 'easy-slider-for-elementor' ),
 					]
 				],
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
+		$this->end_controls_section();
+
+
+
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Carousel Style', 'easy-slider-for-elementor' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'c_loop',
+			[
+				'label' => esc_html__( 'Loop', 'easy-slider-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'easy-slider-for-elementor' ),
+				'label_off' => esc_html__( 'Hide', 'easy-slider-for-elementor' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'c_autoplay',
+			[
+				'label' => esc_html__( 'Autoplay', 'easy-slider-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'easy-slider-for-elementor' ),
+				'label_off' => esc_html__( 'Hide', 'easy-slider-for-elementor' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+		$this->add_control(
+			'c_autoplayhoverpause',
+			[
+				'label' => esc_html__( 'Autoplay Hover Pause', 'easy-slider-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'easy-slider-for-elementor' ),
+				'label_off' => esc_html__( 'Hide', 'easy-slider-for-elementor' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'c_autoplaytimeout',
+			[
+				'label' => esc_html__( 'Autoplay Timout', 'easy-slider-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1000,
+				'max' => 6000,
+				'step' => 100,
+				'default' => 1000,
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
@@ -102,7 +163,7 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 				?>
 				
 				<div class="item">
-					<img src="<?php echo $item['image']['url'] ?>" alt="dummy"/>
+					<img src="<?php echo $item['image']['url'] ?>" alt="carousel-image"/>
 				</div>
 
 				<?php
@@ -113,13 +174,19 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 		?>
 		<script>
 			jQuery(document).ready(function () {
+
+				let sLoop = <?php echo ($settings['c_loop'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlay = <?php echo ($settings['c_autoplay'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlayHoverPause = <?php echo ($settings['c_autoplayhoverpause'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlayTimeOut = <?php echo $settings['c_autoplaytimeout'] ?>
+
 				jQuery(".owl-carousel").owlCarousel({
-						loop: true,
+						loop: sLoop,
 						margin: 10,
 						responsiveClass: true,
-						autoplay:true,
-						autoplayTimeout:1000,
-						autoplayHoverPause:true,
+						autoplay: sAutoPlay,
+						autoplayTimeout:sAutoPlayTimeOut,
+						autoplayHoverPause:sAutoPlayHoverPause,
 						rewind:true,
 						responsive: {
 						0: {
