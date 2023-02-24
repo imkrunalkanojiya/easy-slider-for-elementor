@@ -163,7 +163,7 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 				?>
 				
 				<div class="item">
-					<img src="<?php echo $item['image']['url'] ?>" alt="carousel-image"/>
+					<img src="<?php echo esc_url( $item['image']['url'] ); ?>" alt="carousel-image"/>
 				</div>
 
 				<?php
@@ -175,10 +175,10 @@ class Elementor_Easy_Slider extends \Elementor\Widget_Base {
 		<script>
 			jQuery(document).ready(function () {
 
-				let sLoop = <?php echo ($settings['c_loop'] === 'yes') ? "true" : "false"; ?>;
-				let sAutoPlay = <?php echo ($settings['c_autoplay'] === 'yes') ? "true" : "false"; ?>;
-				let sAutoPlayHoverPause = <?php echo ($settings['c_autoplayhoverpause'] === 'yes') ? "true" : "false"; ?>;
-				let sAutoPlayTimeOut = <?php echo $settings['c_autoplaytimeout'] ?>
+				let sLoop = <?php echo esc_attr($settings['c_loop'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlay = <?php echo esc_attr($settings['c_autoplay'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlayHoverPause = <?php echo esc_attr($settings['c_autoplayhoverpause'] === 'yes') ? "true" : "false"; ?>;
+				let sAutoPlayTimeOut = <?php echo esc_attr($settings['c_autoplaytimeout']) ?>
 
 				jQuery(".owl-carousel").owlCarousel({
 						loop: sLoop,

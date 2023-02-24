@@ -39,7 +39,7 @@ add_action( 'elementor/widgets/register', 'easy_slider_for_elementor' );
 
 function easy_slider_for_elementor_dependencies(){
 
-	wp_register_script( 'easy-slider-script-1', plugins_url( 'assets/js/jquery.min.js', __FILE__ ), array() );
+	// wp_register_script( 'easy-slider-script-1', plugins_url( 'assets/js/jquery.min.js', __FILE__ ), array() );
 	wp_register_script( 'easy-slider-script-2', plugins_url( 'assets/js/owl.carousel.min.js', __FILE__ ), array());
 
 	/* Styles */
